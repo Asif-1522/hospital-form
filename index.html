@@ -1,97 +1,192 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration form</title>
+    <title>Patient Prescription Form</title>
+
     <style>
         *{
-            margin: 0px;
-            padding: 0px;
-            box-sizing: border-box;
-        }
-        body{
-            width: 100vw;
-            min-height: 100vh;
-            background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-        }
-        div{
-            background-color: #ffffff;
-            padding: 50px;
-            border-radius: 5px;
-        }
-        form{
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        img{
-            width: 150px;
-            margin: auto;
-            border: 1px solid black;
-        }
-        h1{
-            text-align: center;
-            color: #0f4c75;
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
-        form *{
-            padding: 13px;
-            border-radius: 5px;
-            outline: none;
-            max-width: 400px;
+        body{
+            width:100%;
+            min-height:100vh;
+            background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:20px;
         }
-        button { 
-            background-color: #bfd30f; 
-            font-weight: 900;
-            font-size: large; 
-            cursor: pointer; 
-            border: none; 
+
+        .container{
+            width:100%;
+            max-width:500px;
+            background:#fff;
+            padding:35px;
+            border-radius:15px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.3);
+            animation: fadeIn 0.6s ease;
         }
-        #msg.success{color: green;}
-        #msg.error{color: red;}
+
+        @keyframes fadeIn{
+            from{
+                opacity:0;
+                transform:translateY(20px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        form{
+            display:flex;
+            flex-direction:column;
+            gap:15px;
+        }
+
+        img{
+            width:120px;
+            height:120px;
+            object-fit:cover;
+            margin:auto;
+            border-radius:50%;
+            border:4px solid #0f4c75;
+            padding:5px;
+        }
+
+        h1{
+            text-align:center;
+            color:#0f4c75;
+            margin-bottom:10px;
+            font-size:28px;
+        }
+
+        input,
+        select,
+        textarea{
+            padding:14px;
+            border:1px solid #ccc;
+            border-radius:8px;
+            outline:none;
+            font-size:15px;
+            transition:0.3s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus{
+            border-color:#0f4c75;
+            box-shadow:0 0 5px rgba(15,76,117,0.4);
+        }
+
+        textarea{
+            resize:none;
+            height:90px;
+        }
+
+        button{
+            padding:14px;
+            background:linear-gradient(135deg,#00b09b,#96c93d);
+            color:white;
+            border:none;
+            border-radius:8px;
+            font-size:18px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        button:hover{
+            transform:scale(1.03);
+            opacity:0.9;
+        }
+
+        button:disabled{
+            opacity:0.6;
+            cursor:not-allowed;
+        }
+
+        #msg{
+            text-align:center;
+            font-weight:bold;
+        }
+
+        #msg.success{
+            color:green;
+        }
+
+        #msg.error{
+            color:red;
+        }
+
+        @media(max-width:500px){
+            .container{
+                padding:25px;
+            }
+
+            h1{
+                font-size:22px;
+            }
+        }
     </style>
 </head>
+
 <body>
-    <div>
-        <form id="hospitalform">
 
-            <h1><b>Patient prescription</b></h1>
-            <input type="text" id="name" placeholder="Patient Name" required>
-            <input type="number" id="age" placeholder="Patient Age" required>
+<div class="container">
 
-            <select id="gender" required>
-                <option value="">Select Gender</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
-            </select>
+    <form id="hospitalform">
 
-              <input type="tel" id="mobile" placeholder="Mobile Number" required>
-            <input type="text" id="disease" placeholder="Disease / Problem" required>
+        <img src="images.png" alt="Hospital Logo">
 
-            <select id="doctor" required>
-                <option value="">Select Doctor</option>
-                <option>Dr. Sharma</option>
-                <option>Dr. Khan</option>
-                <option>Dr. Singh</option>
-                <option>Dr. Kumar</option>
-                <option>Dr. Pyaare Lal</option>
-            </select>
-            
-            <input type="date" id="date" placeholder="Date"  required>
-            <textarea id="address" placeholder="Patient Address"></textarea>
-             <button type="submit" id="submitBtn">Submit</button>
-            <p id="msg"></p>
+        <h1>Patient Prescription</h1>
 
-        </form>
-    </div>
-    <script>
-  const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyHFSLgRBSQWYPU4sIbxOeuJ-C7qK2abRJBeDRs9gX_67AwBt5L_iMZ1TtYsodjEZY0/exec" //
+        <input type="text" id="name" placeholder="Patient Name" required>
 
-  document.getElementById("hospitalform").addEventListener("submit", async function (e) {
+        <input type="number" id="age" placeholder="Patient Age" required>
+
+        <select id="gender" required>
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select>
+
+        <input type="tel" id="mobile" placeholder="Mobile Number" required>
+
+        <input type="text" id="disease" placeholder="Disease / Problem" required>
+
+        <select id="doctor" required>
+            <option value="">Select Doctor</option>
+            <option>Dr. Sharma</option>
+            <option>Dr. Khan</option>
+            <option>Dr. Singh</option>
+            <option>Dr. Kumar</option>
+            <option>Dr. Pyaare Lal</option>
+        </select>
+
+        <input type="date" id="date" required>
+
+        <textarea id="address" placeholder="Patient Address"></textarea>
+
+        <button type="submit" id="submitBtn">Submit</button>
+
+        <p id="msg"></p>
+
+    </form>
+
+</div>
+
+<script>
+
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyHFSLgRBSQWYPU4sIbxOeuJ-C7qK2abRJBeDRs9gX_67AwBt5L_iMZ1TtYsodjEZY0/exec";
+
+document.getElementById("hospitalform").addEventListener("submit", async function (e) {
+
     e.preventDefault();
 
     const btn = document.getElementById("submitBtn");
@@ -100,41 +195,49 @@
     btn.disabled = true;
     btn.textContent = "Submitting...";
     msg.textContent = "";
-    msg.className = "";
 
     const payload = {
-      name:    document.getElementById("name").value.trim(),
-      age:     document.getElementById("age").value.trim(),
-      gender:  document.getElementById("gender").value,
-      mobile:  document.getElementById("mobile").value.trim(),
-      disease: document.getElementById("disease").value.trim(),
-      doctor:  document.getElementById("doctor").value,
-      date:    document.getElementById("date").value,
-      address: document.getElementById("address").value.trim()
+        name: document.getElementById("name").value,
+        age: document.getElementById("age").value,
+        gender: document.getElementById("gender").value,
+        mobile: document.getElementById("mobile").value,
+        disease: document.getElementById("disease").value,
+        doctor: document.getElementById("doctor").value,
+        date: document.getElementById("date").value,
+        address: document.getElementById("address").value
     };
 
     try {
-      // ✅ no-cors avoids CORS errors; response is opaque but data still saves
-      await fetch(WEBAPP_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
 
-      msg.textContent = "✅ Patient data submitted successfully!";
-      msg.className = "success";
-      document.getElementById("hospitalform").reset();
+        await fetch(WEBAPP_URL,{
+            method:"POST",
+            mode:"no-cors",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify(payload)
+        });
 
-    } catch (err) {
-      msg.textContent = "❌ Submission failed. Check your connection.";
-      msg.className = "error";
+        msg.textContent = "✅ Patient data submitted successfully!";
+        msg.className = "success";
+
+        document.getElementById("hospitalform").reset();
+
+    } catch(error){
+
+        msg.textContent = "❌ Submission failed!";
+        msg.className = "error";
+
     } finally {
-      btn.disabled = false;
-      btn.textContent = "Submit";
+
+        btn.disabled = false;
+        btn.textContent = "Submit";
+
     }
-  });
+
+});
+
 </script>
+
 </body>
 </html>
-
